@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: The Plot Thickens | Machine Learning Journey</title>
+    <!-- Link to stylesheet MUST use baseurl -->
+    <link rel="stylesheet" href="/book/style.css">
+    <link rel="stylesheet" href="/book/assets/css/gruvbox.css">
+</head>
+<body>
+    <div class="book-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h1>Machine Learning Journey</h1>
+                <p class="book-description">A brief and engaging description of your book.</p>
+                <nav class="table-of-contents">
+                    <ul>
+                        <!-- Homepage link MUST use baseurl -->
+                        <li><a href="/book/">Introduction</a></li>
+
+                        <!-- Chapter links MUST use baseurl -->
+                        
+                            <li><a href="/book/chapters/chapter1">Chapter 1: The Beginning</a></li>
+                        
+                            <li><a href="/book/chapters/chapter2">Chapter 2: The Plot Thickens</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <main class="main-content">
+            <button id="theme-toggle" title="Toggle theme">
+                <svg id="theme-toggle-dark-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+                <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                </svg>
+            </button>
+            <article class="content-padding">
+                <h1 id="chapter-2">Chapter 2</h1>
+
+<p>This is the first paragraph of the second chapter. You can write your content here using standard Markdown.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Hello, book!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+            </article>
+        </main>
+    </div>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Function to set the theme
+        function setTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+                darkIcon.style.display = 'none';
+                lightIcon.style.display = 'block';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                darkIcon.style.display = 'block';
+                lightIcon.style.display = 'none';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference or use system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme === 'dark' || (savedTheme === null && prefersDark)) {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        // Add event listener
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.body.classList.contains('dark-mode');
+            setTheme(!isDark);
+        });
+    </script>
+</body>
+</html>

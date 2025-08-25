@@ -1,0 +1,225 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.book-container {
+    display: flex;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 300px;
+    position: fixed;
+    height: 100%;
+    background: #fff;
+    border-right: 1px solid #e9ecef;
+    overflow-y: auto;
+}
+
+.sidebar-content {
+    padding: 2rem;
+}
+
+.sidebar h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.book-description {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.table-of-contents ul {
+    list-style: none;
+}
+
+.table-of-contents li a {
+    text-decoration: none;
+    color: #343a40;
+    padding: 0.6rem 0;
+    display: block;
+    transition: all 0.2s ease-in-out;
+    border-left: 3px solid transparent;
+    padding-left: 10px;
+}
+
+.table-of-contents li a:hover {
+    color: #007bff;
+    background-color: #f8f9fa;
+}
+
+.table-of-contents li a.active {
+    color: #007bff;
+    font-weight: bold;
+    border-left: 3px solid #007bff;
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 300px;
+    flex-grow: 1;
+    position: relative; /* Required for positioning the button */
+}
+
+.content-padding {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Styles for converted Markdown content */
+.content-padding h1, .content-padding h2, .content-padding h3 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.content-padding p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.content-padding ul, .content-padding ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.content-padding code {
+    background-color: #e9ecef;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .book-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* --- Additions to style.css --- */
+
+/* Replace the old .theme-toggle-button styles with these */
+#theme-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#theme-toggle:hover {
+    background-color: #e9ecef;
+}
+
+#theme-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ----------------------------- */
+/* --- Dark Mode Styles --- */
+/* ----------------------------- */
+
+/* This class will be toggled on the <body> tag */
+body.dark-mode {
+    color: #e0e0e0;
+    background-color: #121212;
+}
+
+/* Dark Sidebar */
+.dark-mode .sidebar {
+    background: #1e1e1e;
+    border-right: 1px solid #333;
+}
+
+.dark-mode .sidebar h1 {
+    color: #ffffff;
+}
+
+.dark-mode .book-description {
+    color: #a0a0a0;
+}
+
+/* Dark Table of Contents Links */
+.dark-mode .table-of-contents li a {
+    color: #c0c0c0;
+}
+
+.dark-mode .table-of-contents li a:hover {
+    color: #4da6ff; /* A brighter blue for dark background */
+    background-color: #2a2a2a;
+}
+
+.dark-mode .table-of-contents li a.active {
+    color: #4da6ff;
+    font-weight: bold;
+    border-left-color: #4da6ff;
+}
+
+/* Dark Main Content Area */
+.dark-mode .main-content {
+    background-color: #121212; /* Match body background */
+}
+
+/* Dark Markdown Elements */
+.dark-mode .content-padding h1,
+.dark-mode .content-padding h2,
+.dark-mode .content-padding h3 {
+    color: #ffffff;
+    border-bottom: 1px solid #444;
+}
+
+.dark-mode .content-padding a {
+    color: #4da6ff;
+}
+
+.dark-mode .content-padding code {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+/* Dark Toggle Button */
+.dark-mode #theme-toggle {
+    color: #a0a0a0;
+}
+
+.dark-mode #theme-toggle:hover {
+    background-color: #333;
+}
+
+/* Fix for code block background conflict */
+.highlight code {
+    background-color: transparent;
+}
