@@ -2,6 +2,8 @@
 layout: default
 title: "Chapter 1: The Beginning"
 ---
+# Chapter 1
+
 This is the first paragraph of the first chapter. You can write your content here using standard Markdown.
 
 ## A new section
