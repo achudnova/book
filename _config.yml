@@ -8,4 +8,4 @@ url: "https://achudnova.github.io"
 collections:
   chapters:
     output: true
-    permalink: /:collection/:name
+    permalink: /chapters/:name
