@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | {{ site.title }}</title>
-    <!-- This is the corrected link to your stylesheet -->
+    <!-- Link to stylesheet MUST use baseurl -->
     <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
 </head>
 <body>
@@ -15,9 +15,10 @@
                 <p class="book-description">{{ site.description }}</p>
                 <nav class="table-of-contents">
                     <ul>
-                        <!-- Link to the homepage -->
+                        <!-- Homepage link MUST use baseurl -->
                         <li><a href="{{ site.baseurl }}/">Introduction</a></li>
-                        <!-- Loop through all documents in the 'chapters' collection -->
+
+                        <!-- Chapter links MUST use baseurl -->
                         {% for chapter in site.chapters %}
                             <li><a href="{{ site.baseurl }}{{ chapter.url }}">{{ chapter.title }}</a></li>
                         {% endfor %}
@@ -27,7 +28,6 @@
         </aside>
         <main class="main-content">
             <article class="content-padding">
-                <!-- The content from your Markdown file goes here -->
                 {{ content }}
             </article>
         </main>
