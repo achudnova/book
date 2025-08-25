@@ -1,0 +1,11 @@
+# _config.yml
+title: Machine Learning Journey
+description: A brief and engaging description of your book.
+baseurl: "/book" # The name of your repository
+url: "https://achudnova.github.io"
+
+# This tells Jekyll to treat the 'chapters' folder as a collection
+collections:
+  chapters:
+    output: true
+    permalink: /:collection/:name

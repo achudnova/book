@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Book Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+</head>
+<body>
+    <div class="book-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h1>Your Book Title</h1>
+                <p class="book-description">A brief and engaging description of your book.</p>
+
+                <!-- 1. Add the Dark Mode Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle-button">Toggle Dark Mode</button>
+
+                <nav id="toc" class="table-of-contents">
+                    <ul>
+                        <li><a href="#" onclick="loadChapter('chapters/chapter1.md', this)">Chapter 1: The Beginning</a></li>
+                        <li><a href="#" onclick="loadChapter('chapters/chapter2.md', this)">Chapter 2: The Plot Thickens</a></li>
+                        <!-- Add more chapters here -->
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <main class="main-content">
+            <article id="content-area" class="content-padding">
+                <h2>Welcome!</h2>
+                <p>Please select a chapter from the menu to begin reading.</p>
+            </article>
+        </main>
+    </div>
+
+    <script>
+        // --- Chapter Loading Logic (from before) ---
+        const contentArea = document.getElementById('content-area');
+        const tocLinks = document.querySelectorAll('#toc a');
+        const converter = new showdown.Converter();
+
+        function loadChapter(chapterPath, clickedLink) {
+            fetch(chapterPath)
+                .then(response => response.text())
+                .then(markdown => {
+                    const html = converter.makeHtml(markdown);
+                    contentArea.innerHTML = html;
+                    tocLinks.forEach(link => link.classList.remove('active'));
+                    clickedLink.classList.add('active');
+                })
+                .catch(error => {
+                    console.error('Error loading chapter:', error);
+                    contentArea.innerHTML = `<p style="color: red;">Sorry, this chapter could not be loaded.</p>`;
+                });
+        }
+
+        // --- 2. Dark Mode Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark'); // Save preference
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light'); // Save preference
+            }
+        }
+
+        // Event listener for the toggle button
+        themeToggle.addEventListener('click', () => {
+            const isDarkMode = body.classList.contains('dark-mode');
+            setTheme(isDarkMode ? 'light' : 'dark');
+        });
+
+        // --- On Page Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+
+            // Load the first chapter automatically
+            loadChapter('chapters/chapter1.md', tocLinks[0]);
+        });
+    </script>
+</body>
+</html>
