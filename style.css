@@ -218,3 +218,8 @@ body.dark-mode {
 .dark-mode #theme-toggle:hover {
     background-color: #333;
 }
+
+/* Fix for code block background conflict */
+.highlight code {
+    background-color: transparent;
+}
