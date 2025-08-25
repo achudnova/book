@@ -103,13 +103,6 @@ body {
     border-radius: 3px;
 }
 
-.content-padding pre {
-    background-color: #e9ecef;
-    padding: 1rem;
-    border-radius: 5px;
-    overflow-x: auto;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .book-container {
@@ -215,11 +208,6 @@ body.dark-mode {
 .dark-mode .content-padding code {
     background-color: #333;
     color: #f1f1f1;
-}
-
-.dark-mode .content-padding pre {
-    background-color: #2a2a2a;
-    border: 1px solid #444;
 }
 
 /* Dark Toggle Button */
